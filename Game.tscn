@@ -1,0 +1,101 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjkgopg4j0l7d"]
+
+[ext_resource type="Script" path="res://Game.gd" id="1_0eldu"]
+[ext_resource type="Script" path="res://Player.gd" id="1_3xm4q"]
+[ext_resource type="Texture2D" uid="uid://c0rf2xs2ndh43" path="res://icon.png" id="2_om63u"]
+
+[sub_resource type="SpriteFrames" id="1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_om63u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkhw3"]
+size = Vector2(200, 200)
+
+[node name="GameScene" type="Node2D"]
+script = ExtResource("1_0eldu")
+
+[node name="Countdown" type="CenterContainer" parent="."]
+unique_name_in_owner = true
+z_index = 1000
+offset_right = 615.0
+offset_bottom = 720.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Countdown"]
+layout_mode = 2
+
+[node name="CountdownLabel" type="Label" parent="Countdown/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "GET READY"
+
+[node name="GameOver" type="CenterContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 1000
+offset_right = 1280.0
+offset_bottom = 720.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver"]
+layout_mode = 2
+
+[node name="GameOverLabel" type="Label" parent="GameOver/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "GAME OVER"
+
+[node name="GameOverButton" type="Button" parent="GameOver/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "New Game"
+
+[node name="Field" type="Node2D" parent="."]
+position = Vector2(800, 360)
+scale = Vector2(3.3, 3.3)
+
+[node name="Background" type="Polygon2D" parent="Field"]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-100, -100, 100, -100, 100, 100, -100, 100)
+
+[node name="Player" type="Node2D" parent="Field"]
+unique_name_in_owner = true
+script = ExtResource("1_3xm4q")
+angular_speed = 3.0
+
+[node name="Body" type="Line2D" parent="Field/Player"]
+width = 2.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Field/Player/Body"]
+
+[node name="Head" type="Area2D" parent="Field/Player"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Field/Player/Head"]
+visible = false
+scale = Vector2(0.036, 0.036)
+sprite_frames = SubResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Field/Player/Head"]
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="FieldCollider" type="Area2D" parent="Field"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Field/FieldCollider"]
+shape = SubResource("RectangleShape2D_tkhw3")
+
+[connection signal="pressed" from="GameOver/VBoxContainer/GameOverButton" to="." method="_on_button_pressed"]
+[connection signal="body_entered" from="Field/Player/Head" to="Field/Player" method="_on_head_body_entered"]
+[connection signal="area_exited" from="Field/FieldCollider" to="." method="_on_field_collider_area_exited"]
+[connection signal="area_shape_exited" from="Field/FieldCollider" to="." method="_on_field_collider_area_shape_exited"]
+[connection signal="body_exited" from="Field/FieldCollider" to="." method="_on_field_collider_body_exited"]
