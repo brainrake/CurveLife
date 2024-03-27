@@ -7,7 +7,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 
@@ -24,13 +24,13 @@ func _process(delta):
 @export var control_left := ""
 @export var control_right := ""
 
-func make_segment(distance, angle, width):
-#	print("D:", distance, " A:", angle, " W:",width)
+func make_segment(distance, angle, width_):
+#	print("D:", distance, " A:", angle, " W:",width_)
 	return [
-		Vector2(-width/2, 0.1),
-		Vector2(width/2, 0.1),
-		(Vector2(0, distance) + Vector2(width/2, 0).rotated(angle)),
-		(Vector2(0, distance) - Vector2(width/2, 0).rotated(angle)),
+		Vector2(-width_/2, 0.1),
+		Vector2(width_/2, 0.1),
+		(Vector2(0, distance) + Vector2(width_/2, 0).rotated(angle)),
+		(Vector2(0, distance) - Vector2(width_/2, 0).rotated(angle)),
 	]
 
 func _physics_process(delta):
