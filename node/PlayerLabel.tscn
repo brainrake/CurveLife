@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0ym0bj1ckxen"]
+
+[ext_resource type="Script" path="res://src/PlayerLabel.gd" id="1_redow"]
+[ext_resource type="Theme" uid="uid://des6yfx7nv5su" path="res://theme.tres" id="2_10sks"]
+
+[node name="PlayerLabel" type="HBoxContainer"]
+script = ExtResource("1_redow")
+
+[node name="Placement" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("2_10sks")
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(80, 55)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Score" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_10sks")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("2_10sks")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("2_10sks")
+text = "player"

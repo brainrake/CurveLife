@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://des6yfx7nv5su"]
+
+[ext_resource type="FontFile" uid="uid://dg0d1qsr4tpgs" path="res://font/RubikMonoOne-Regular.ttf" id="1_rhnfe"]
+
+[resource]
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_rhnfe")
