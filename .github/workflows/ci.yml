@@ -23,7 +23,7 @@ jobs:
           mkdir -v -p build/windows
           godot --headless --verbose --export-release "Windows Desktop" ./build/windows/$EXPORT_NAME.exe
       - name: Upload Artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: windows
           path: build/windows
@@ -45,7 +45,7 @@ jobs:
           mkdir -v -p build/linux
           godot --headless --verbose --export-release "Linux/X11" ./build/linux/$EXPORT_NAME.x86_64
       - name: Upload Artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: linux
           path: build/linux
@@ -72,7 +72,7 @@ jobs:
           sed  '/\<head\>/a \<script src="coi-serviceworker.js"\>\</script\>' ./build/web/index.html > temp.html
           mv temp.html ./build/web/index.html
       - name: Upload Artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: web
           path: build/web
@@ -102,7 +102,7 @@ jobs:
           mkdir -v -p build/mac
           godot --headless --verbose --export-release "Mac OSX" ./build/mac/$EXPORT_NAME.zip
       - name: Upload Artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: mac
           path: build/mac
@@ -125,4 +125,4 @@ jobs:
         with:
           tag: release-${{ github.sha }}
           commit: ${{ github.sha }}
-          artifacts: "*"
+          artifacts: "release/*"
