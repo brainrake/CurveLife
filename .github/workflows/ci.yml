@@ -75,7 +75,7 @@ jobs:
       - name: Patch build to support SharedArrayBuffer
         run: |
           cp coi-serviceworker.js ./build/web/
-          sed  '/\<head\>/a \<script src="coi-serviceworker.js"\>\</script\>' ./buid/web/index.html > temp.html
+          sed  '/\<head\>/a \<script src="coi-serviceworker.js"\>\</script\>' ./build/web/index.html > temp.html
           mv temp.html ./build/web/index.html
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
