@@ -113,11 +113,16 @@ jobs:
     needs: [export-linux, export-windows, export-mac, export-web]
     steps:
       - uses: actions/checkout@v3
-      - run: mkdir release
+      - run: mkdir release release-zip
       - uses: actions/download-artifact@v4
         with:
           path: release
-      - run: ls -laR release
+      - run: |
+        ls -laR release
+        zip release-zip/CurveLife-windows.zip release/windows/*
+        zip release-zip/CurveLife-linux.zip release/linux/*
+        zip release-zip/CurveLife-macOS.zip release/mac/*
+        zip release-zip/CurveLife-web.zip release/web/*
       - uses: rickstaa/action-create-tag@v1
         with:
           tag: release-${{ github.sha }}
@@ -125,4 +130,4 @@ jobs:
         with:
           tag: release-${{ github.sha }}
           commit: ${{ github.sha }}
-          artifacts: "release/*/*"
+          artifacts: "release-zip/*"
