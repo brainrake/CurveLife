@@ -113,10 +113,11 @@ jobs:
     needs: [export-linux, export-windows, export-mac, export-web]
     steps:
       - uses: actions/checkout@v3
+      - run: mkdir release
       - uses: actions/download-artifact@v4
         with:
-          pattern: "*"
-      - run: ls -la
+          path: release
+      - run: ls -la release
       - uses: rickstaa/action-create-tag@v1
         with:
           tag: release-${{ github.sha }}
