@@ -13,7 +13,7 @@ jobs:
       image: barichello/godot-ci:4.2.1
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           lfs: true
       - name: Setup
@@ -37,7 +37,7 @@ jobs:
       image: barichello/godot-ci:4.2.1
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           lfs: true
       - name: Setup
@@ -61,7 +61,7 @@ jobs:
       image: barichello/godot-ci:4.2.1
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           lfs: true
       - name: Setup
@@ -98,7 +98,7 @@ jobs:
       image: barichello/godot-ci:4.2.1
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           lfs: true
       - name: Setup
@@ -114,3 +114,19 @@ jobs:
         with:
           name: mac
           path: build/mac
+
+  release:
+    name: Release
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: "*"
+      - uses: rickstaa/action-create-tag@v1
+        with:
+          tag: release-${{ github.sha }}
+      - uses: ncipollo/release-action@v1
+        with:
+          tag: release-${{ github.sha }}
+          commit: ${{ github.sha }}
+          artifacts: "*"
