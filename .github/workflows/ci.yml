@@ -122,8 +122,8 @@ jobs:
           ls -laR release
           zip release-zip/CurveLife-windows.zip release/windows/*
           zip release-zip/CurveLife-linux.zip release/linux/*
-          zip release-zip/CurveLife-macOS.zip release/mac/*
           zip release-zip/CurveLife-web.zip release/web/*
+          cp release/mac/CurveLife.zip release-zip/CurveLife-macos.zip
       - uses: rickstaa/action-create-tag@v1
         with:
           tag: release-${{ github.sha }}
