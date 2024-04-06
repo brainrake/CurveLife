@@ -118,10 +118,12 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-20.04
+    needs: [export-linux, export-windows, export-mac, export-web]
     steps:
       - uses: actions/download-artifact@v4
         with:
           pattern: "*"
+      - run: ls -la
       - uses: rickstaa/action-create-tag@v1
         with:
           tag: release-${{ github.sha }}
