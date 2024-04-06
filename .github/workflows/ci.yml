@@ -125,4 +125,4 @@ jobs:
         with:
           tag: release-${{ github.sha }}
           commit: ${{ github.sha }}
-          artifacts: "release/*"
+          artifacts: "release/*/*"
