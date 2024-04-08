@@ -258,7 +258,7 @@ func lowpass_to(target : float, timer : Timer):
   var t = 1.0 - (timer.time_left / timer.wait_time)
   var o = 1 - pow(2, -c * t )
   var i = pow(2, t * c - c)
-  lowpass.cutoff_hz = lerpf((1.0 - target) * 20000, target * 20000, clamp(lerp(o, i, target), 0.05, 1))
+  lowpass.cutoff_hz = lerpf((1.0 - target) * 20000, target * 20000, clamp(lerp(o, i, target), 0.03, 1))
 
 func _ready():
   lowpass = AudioServer.get_bus_effect(1, 0)
@@ -305,7 +305,7 @@ func _process(_delta):
       #   lowpass_to(1.0, snakes[0].invincible_timer)
 
     State.end:
-      lowpass_to(0.05, launch_timer)
+      lowpass_to(0.03, launch_timer)
       message.text = "%s wins!\nnext round starts in %s" % [round_winner.show_skin(), ceil(launch_timer.time_left)]
       field.line.material = Skins.get_material(round_winner.skin)
     State.over:
