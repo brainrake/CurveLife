@@ -40,6 +40,6 @@ func show_short() -> String:
 
 func show_dir() -> String:
   if device == -1:
-    return "%s↑%s" % [button_string(left), button_string(right)]
+    return "%s^%s" % [button_string(left), button_string(right)]
   else:
     return "(%s)" % [device]
