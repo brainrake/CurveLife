@@ -261,6 +261,17 @@ func lowpass_to(target : float, timer : Timer):
   lowpass.cutoff_hz = lerpf((1.0 - target) * 20000, target * 20000, clamp(lerp(o, i, target), 0.03, 1))
 
 func _ready():
+  preload("res://art/cheese.png")
+  preload("res://art/eraser.png")
+  preload("res://art/fat.png")
+  preload("res://art/fly.png")
+  preload("res://art/missing.png")
+  preload("res://art/reverse.png")
+  preload("res://art/sharp.png")
+  preload("res://art/slow.png")
+  preload("res://art/speed.png")
+  preload("res://art/swap.png")
+  preload("res://art/thin.png")
   lowpass = AudioServer.get_bus_effect(1, 0)
   lowpass.cutoff_hz = 20000
   Skins.generate()

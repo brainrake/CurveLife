@@ -52,7 +52,7 @@ func get_type() -> String:
 
 func _init():
   type = get_type()
-  
+
   z_index = 0
 
   timer = Timer.new()
