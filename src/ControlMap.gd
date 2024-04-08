@@ -22,7 +22,7 @@ func show() -> String:
     return "%s-%s" % [button_string(left), button_string(right)]
   else:
     return "j%s R / A-B" % [device]
-    
+
 func button_string(code : int) -> String:
   match code:
     KEY_LEFT:
@@ -37,10 +37,9 @@ func show_short() -> String:
     return "%s-%s" % [button_string(left), button_string(right)]
   else:
     return "(%s)" % [device]
-  
+
 func show_dir() -> String:
   if device == -1:
     return "%s↑%s" % [button_string(left), button_string(right)]
   else:
     return "(%s)" % [device]
-  

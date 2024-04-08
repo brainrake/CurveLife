@@ -37,7 +37,7 @@ var items : Array[Script] = [
   Fat,
   Reverse,
   Sharp,
-  
+
   # Cleaner,
 ]
 
@@ -79,7 +79,7 @@ func on_player_pickedup(p : Player, item : Item):
 func spawn_snake(player : Player):
   var s = Snake.new(
     player,
-    field.random_pos(), 
+    field.random_pos(),
     Vector2.UP.rotated(randf() * TAU),
     level
   )
@@ -134,7 +134,7 @@ func on_player_died(index : int):
     if not p.disabled:
       p.set_score(p.score + 1)
       alive += 1
-  
+
   if alive == 1 or players.size() == 1:
     if state == State.game:
       round_winner = get_round_winner() if players.size() > 1 else players[0]
@@ -182,14 +182,14 @@ func game_over():
   Util.clear_children(endboard)
 
   winner_label.text = "%s wins the game!" % match_winner.show_skin()
-  
+
   for p in players:
     var l := PlayerLabel.instance()
     endboard.add_child(l)
     l.update_label(p.show_skin())
     l.update_skin(p.skin)
     l.update_score(p.score)
-  
+
   Util.sort_children(endboard, PlayerLabel.descending)
 
   var i := 1
@@ -313,4 +313,3 @@ func _process(_delta):
         change_state(State.lobby)
       elif Input.is_action_just_pressed("ui_cancel"):
         reload()
-
