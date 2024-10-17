@@ -14,7 +14,7 @@ var score : int = 0
 
 func show_controls() -> String:
   return map.show_short()
-  
+
 func show_skin() -> String:
   return Skins.get_material(skin).resource_name
 
@@ -31,7 +31,7 @@ func _init(i : int, m : ControlMap):
   map = m
 
 func input() -> float:
-  if disabled: 
+  if disabled:
     return 0
   else:
     return Input.get_axis("left" + str(index), "right" + str(index))
