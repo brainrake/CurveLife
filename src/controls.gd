@@ -7,10 +7,14 @@ func controller_map(device : int):
   return ControlMap.new(JOY_BUTTON_A, JOY_BUTTON_B, JOY_AXIS_RIGHT_X, device)
 
 var maps = [
+  ControlMap.new(KEY_Q, KEY_W),
   ControlMap.new(KEY_A, KEY_S),
+  ControlMap.new(KEY_Z, KEY_X),
   ControlMap.new(KEY_F, KEY_G),
   ControlMap.new(KEY_J, KEY_K),
   ControlMap.new(KEY_LEFT, KEY_RIGHT),
+  ControlMap.new(KEY_O, KEY_P),
+  ControlMap.new(KEY_N, KEY_M),
   controller_map(0),
   controller_map(1),
   controller_map(2),
@@ -79,7 +83,7 @@ func erase_player(index : int):
   for a in ControlMap.possible_actions:
     if InputMap.has_action(a + str(index)):
       InputMap.erase_action(a + str(index))
-  
+
   for p in get_children():
     if p.index == index:
       p.disabled = true
@@ -130,7 +134,7 @@ func _input(e):
       if m != null:
         try_register_key(m)
   elif e is InputEventJoypadButton:
-    if Input.get_joy_name(e.device).contains("Touchpad"): 
+    if Input.get_joy_name(e.device).contains("Touchpad"):
       return
     var m = map_from_joy_button(e.button_index, e.device)
     if m != null:
