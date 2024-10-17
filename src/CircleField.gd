@@ -5,7 +5,7 @@ var radius : float
 
 func _init(r : float):
   radius = r
-  super(Util.circle(r, 64))
+  super(Util.circle(r, 256))
 
 func random_pos() -> Vector2:
   var p = randf() * TAU
