@@ -60,8 +60,8 @@ func add_joy_button_action(index : int, label : String, button : int, device : i
 
 func add_joy_move_axis_action(index : int, map : ControlMap):
   var id = str(index)
-  InputMap.add_action("left" + id)
-  InputMap.add_action("right" + id)
+  InputMap.add_action("left" + id, 0.1)
+  InputMap.add_action("right" + id, 0.1)
 
   add_joy_axis_action(index, "left", map.axis, -1, map.device)
   add_joy_axis_action(index, "right", map.axis, 1, map.device)
