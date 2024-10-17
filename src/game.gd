@@ -109,7 +109,7 @@ func clear_level():
 func init_level():
   clear_level()
   match_goal = max((players.size() - 1) * 10, 1)
-  width = clamp(players.size() * 190, width_range.x, width_range.y)
+  width = clamp(players.size() * 300, width_range.x, width_range.y)
   item_timer.wait_time = item_wait.x
   create_field(width * 2)
 
