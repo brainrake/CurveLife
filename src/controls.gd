@@ -63,6 +63,8 @@ func add_joy_move_axis_action(index : int, map : ControlMap):
   InputMap.add_action("left" + id, 0.1)
   InputMap.add_action("right" + id, 0.1)
 
+  add_joy_axis_action(index, "left", JOY_AXIS_TRIGGER_LEFT, 1, map.device)
+  add_joy_axis_action(index, "right", JOY_AXIS_TRIGGER_RIGHT, 1, map.device)
   add_joy_axis_action(index, "left", map.axis, -1, map.device)
   add_joy_axis_action(index, "right", map.axis, 1, map.device)
   add_joy_button_action(index, "left", map.left, map.device)
